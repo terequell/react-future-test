@@ -1,0 +1,16 @@
+.buttons__block {
+   padding-top: 0.3vh;
+   padding-bottom: 50px;
+}
+
+.button__kit {
+   margin-right: 2vh;
+}
+
+.page__element, .current__page {
+   padding-right: 5px;
+}
+
+.current__page {
+   font-weight: bold;
+}

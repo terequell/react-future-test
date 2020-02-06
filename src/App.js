@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Tabledata from './Table/Tabledata'
+import { Button } from 'react-bootstrap';
+import styles from './Styles.module.css'
 
 function App() {
+  const [dataKit, setDataKit] = useState(null)
+
+  const minDataUrl = 'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}'
+  const maxDataUrl = 'http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}'
+
+  const onChooseDataKit = (dataKit) => {
+    setDataKit(dataKit)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h4>Choose your datakit:</h4>
+      <div className = {styles.buttons__block}>
+        <Button onClick = {() => onChooseDataKit(minDataUrl)} variant="primary" className = {styles.button__kit}>Small data kit</Button>
+        <Button onClick = {() => onChooseDataKit(maxDataUrl)} variant="primary" className = {styles.button__kit}>Large data kit</Button>
+      </div>
+      {dataKit ? <Tabledata dataKit = {dataKit}/> : null}
     </div>
   );
 }
