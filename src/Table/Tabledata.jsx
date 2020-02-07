@@ -17,18 +17,25 @@ const Tabledata = (props) => {
    const [currentUser, setCurrentUser] = useState(null)
    const [currentPage, setCurrentPage] = useState(1)
    const [addUserFlag, setAddUserFlag] = useState(false)
+   const [isError, setIsError] = useState(false)
 
    const rowsPerPage = 32
 
    useEffect(() => {
       const axiosData = async () => {
+         try {
          setCurrentKit(props.dataKit)
          setIsLoading(true)
          const response = await axios(props.dataKit)
          setData(response.data)
          setIsLoading(false)
+         }  
+         catch (error) {
+            setIsError(true)
+         }  
       }
       if (props.dataKit !== currentKit) {
+         setIsError(false)
          axiosData()
       }  
       data.length > (rowsPerPage + 1) ? onChangeCurrentUsers(currentPage) : setCurrentUsers([...data])
@@ -66,7 +73,7 @@ const Tabledata = (props) => {
    }
 
    return (
-      isLoading ? <Spinner animation="border"/> 
+      isLoading ? (isError ? <p>Something went wrong. Please, refresh page or connect with developers.</p> : <Spinner animation="border"/>) 
       :<div>
          <SearchForm submitForm = {setSearchData}/>
          <Button variant = 'primary' onClick = {() => setAddUserFlag(!addUserFlag)}>Add new user</Button>

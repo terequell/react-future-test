@@ -11,7 +11,7 @@ const SearchForm = (props) => {
    }
 
    return (
-      <Form onSubmit = {(e) => submitForm(e)} сlassName = {styles.main__searchform} inline>
+      <Form onSubmit = {(e) => submitForm(e)} inline>
          <FormControl type="text" placeholder="Type your request here" className="mr-sm-2" value = {currentInput} onChange = {(e) => setCurrentInput(e.target.value)}/>
          <Button variant="dark" type = 'submit'>Search</Button>
       </Form>
