@@ -1,3 +1,5 @@
+<b>Насчет сборки в Docker - использовал Windows, и при сборке у меня полетели ошибки в каких-то зависимостях, в общем в итоге ничего не завелось. Первый блин комом :(</b>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
