@@ -58,6 +58,7 @@ const Tabledata = (props) => {
       let rightBorder = rowsPerPage * pageNumber
 
       setCurrentUsers(data.slice(0).slice(leftBorder, rightBorder))
+      setSortState({...sortState, col:null})
    }
 
    const checkSearch = (el) => {
