@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Spinner, Button } from 'react-bootstrap'
 import Tableelement from './Tableelement'
-import axios from 'axios'
 import Paginator from '../OtherComponents/Paginator'
 import SearchForm from '../Forms/SearchForm'
 import ExtendInfo from '../OtherComponents/ExtendInfo'
@@ -26,7 +25,7 @@ const Tabledata = (props) => {
          try {
          setCurrentKit(props.dataKit)
          setIsLoading(true)
-         const response = await axios(props.dataKit)
+         const response = await fetch(props.dataKit)
          setData(response.data)
          setIsLoading(false)
          }  
