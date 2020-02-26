@@ -25,8 +25,9 @@ const Tabledata = (props) => {
          try {
          setCurrentKit(props.dataKit)
          setIsLoading(true)
-         const response = await fetch(props.dataKit)
-         setData(response.data)
+         const responseNonJSON = await fetch(props.dataKit)
+         const response = await responseNonJSON.json()
+         setData(response)
          setIsLoading(false)
          }  
          catch (error) {
